@@ -14,12 +14,15 @@
   <body>
     <h1>Expressions and Interpolation</h1>
     <div ng-controller="MsgController">
-      {{name}} has a message for you: <br />
-      {{sayMessage()}}
+      Original: {{sayMessage()}} <br>
+      Loves: {{sayLovesMessage()}} <br>
+      Truth: {{sayLovesMessage() |  truth : 'healthy' : 'cookie'}} <br>
+      BIG TRUTH: {{sayLovesMessage() |  truth : 'healthy' : 'cookie' | uppercase}}
       <div>
         <button ng-click="feed()">Feed smiley</button>
+        Cost: {{ cookieCost | currency : "#blah" : 4 }}
         <br />
-        <img style="height: 200px;" ng-src="images/yakov_{{stateOfBeing}}.png">
+        <img style="height: 200px" ng-src="images/yakov_{{stateOfBeing}}.png" />
       </div>
     </div>
   </body>
