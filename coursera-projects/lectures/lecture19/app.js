@@ -18,20 +18,31 @@
 
     ChildController1.$inject = [$scope];
     function ChildController1($scope) {
-      console.log("$scope.parentValue: ", $scope.parentValue);
-      console.log("CHILD $scope: ", $scope);
+      // console.log("$scope.parentValue: ", $scope.parentValue);
+      // console.log("CHILD $scope: ", $scope);
 
 
-      $scope.parentValue = 5;
-      console.log("*** CHANGED: $scope.parentValue = 5");
-      console.log($scope);
+      // $scope.parentValue = 5;
+      // console.log("*** CHANGED: $scope.parentValue = 5");
+      // console.log($scope);
 
-      console.log("$scope.pc.parentValue: ", $scope.pc.parentValue)
-      $scope.pc.parentValue = 5;
-      console.log("** CHANGED: $scope.pc.parentValue = 5: ****");
-      console.log("$scope: ", $scope);
+      // console.log("$scope.pc.parentValue: ", $scope.pc.parentValue)
+      // $scope.pc.parentValue = 5;
+      // console.log("** CHANGED: $scope.pc.parentValue = 5: ****");
+      // console.log("$scope: ", $scope);
 
-      console.log("$scope.$parent.parentValue: ", $scope.$parent.parentValue);
+      // console.log("$scope.$parent.parentValue: ", $scope.$parent.parentValue);
+    }
+
+    // ** Controller As Syntax
+    function ParentController2() {
+      var parent = this;
+      parent.value = 1;
+    }
+    function ChildController2() {
+      var parent = this;
+      parent.value = 5;
+      console.log("ChildController2 $scope: ", $scope);
     }
 
 
