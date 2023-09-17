@@ -1,22 +1,38 @@
 (function () {
   "use strict";
 
-  angular.module('ShoppingListApp', [])
-    .controller('ShoppingListController', ShoppingListController);
+  angular.module('ControllerAsApp', [])
+    .controller('ParentController1', ParentController1)
+    .controller('ChildController1', ChildController1)
+    .controller('ParentController2', ParentController2)
+    .controller('ChildController2', ChildController2);
 
-    ShoppingListController.$inject = ['$scope'];
-    function ShoppingListController($scope){
+    ParentController1.$inject = ['$scope'];
+    function ParentController1($scope){
 
-      $scope.shoppingList1 = shoppingList1;
-      $scope.shoppingList2 = shoppingList2;
+      $scope.parentValue = 1;
+      $scope.pc = this;
+      $scope.pc.parentValue = 1;
 
-      $scope.addToList = function (){
-        var newItem = {
-          name: $scope.newItemName,
-          quantity: $scope.newItemQuantity
-        };
-      };
+    }
 
-      $scope.shoppingList2.push(newItem);
-    };
+    ChildController1.$inject = [$scope];
+    function ChildController1($scope) {
+      console.log("$scope.parentValue: ", $scope.parentValue);
+      console.log("CHILD $scope: ", $scope);
+
+
+      $scope.parentValue = 5;
+      console.log("*** CHANGED: $scope.parentValue = 5");
+      console.log($scope);
+
+      console.log("$scope.pc.parentValue: ", $scope.pc.parentValue)
+      $scope.pc.parentValue = 5;
+      console.log("** CHANGED: $scope.pc.parentValue = 5: ****");
+      console.log("$scope: ", $scope);
+
+      console.log("$scope.$parent.parentValue: ", $scope.$parent.parentValue);
+    }
+
+
 })();
